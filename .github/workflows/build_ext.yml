@@ -1,19 +1,15 @@
-- name: Build extension
-  # You may pin to the exact commit or the version.
-  # uses: TheDoctor0/zip-release@d81722b768497cc1811c307cc7057ced9c25bf60
-  uses: TheDoctor0/zip-release@0.7.0
-  with:
-    # Filename for archive
-    filename: Polish-Coub.zip # default is release.zip
-    # Base path for archive files
-    path: # optional, default is .
-    # Working directory before zipping
-    directory: # optional, default is .
-    # List of excluded files / directories
-    exclusions: # optional, default is 
-    # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
-    recursive_exclusions: # optional, default is 
-    # Provide any custom parameters to the command
-    custom: # optional, default is 
-    # Tool to use for archiving
-    type: zip # optional, default is zip
+name: Build extension
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  zip-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: vimtor/action-zip@v1
+        with:
+          files: manifest.json favicon.svg credits.html background-coub-pl.js style/ js/ ico/ _locales/
+          dest: Polish-Coub.zip

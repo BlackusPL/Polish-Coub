@@ -1,0 +1,30 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "/ico/favicon.png"
+      },
+      "default_popup": "credits.html",
+      "default_title": "Polish Coub"
+   },
+   "author": "BlackusPL",
+   "background": {
+      "service_worker": "background-coub-pl.js"
+   },
+   "content_scripts": [ {
+      "css": [ "style/credits.css" ],
+      "js": [ "js/polishcoub.js" ],
+      "matches": [ "*://coub.com/*" ]
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_appDesc__",
+   "homepage_url": "https://blackuspl.github.io/DarknessAir",
+   "icons": {
+      "128": "/ico/favicon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAplTrVW5uwhKdiuFmWJcqMI4qEM5Dp2/jisE5LXfL1DbMYvXjx13EaY4X63f/cJOMap6DihykKiKye4odRqpZy68leOFZ4/2P1UGLCT9kEgTZibjR6qtKpfvXIxasm3FlTXjEWzu2tKl7mM/8QnpvUW9uImlhL1lRNe2/qhEleCQ5zI9XurkfFeNcv0COmKTQp3BjyYxB++Yw/77Yw+STT8krX7oOp9V/M88b2bSnpomQs2Hgu4IV7uJyj3HO3CrP3T4Vq2VRpuYKhls2OO6jb27uPFwKJiYHe9e3umWLEB+iZSnDRasMWocYwtwXWYN00uMdy3lDjDQ06h64I3qflwIDAQAB",
+   "manifest_version": 3,
+   "name": "__MSG_appName__",
+   "permissions": [ "webRequest" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.50"
+}

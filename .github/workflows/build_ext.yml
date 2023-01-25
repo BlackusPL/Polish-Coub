@@ -11,9 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: vimtor/action-zip@v1
+        with:
+          files: manifest.json favicon.svg credits.html background-coub-pl.js style/ js/ ico/ /_locales
+          recursive: false
+          dest: Polish-Coub.zip
       - uses: actions/upload-artifact@v1
         with:
-          files: manifest.json favicon.svg credits.html background-coub-pl.js /style /js /ico /_locales
-          dest: Polish-Coub.zip
           name: ext-release
           path: ${{ github.workspace }}/Polish-Coub.zip

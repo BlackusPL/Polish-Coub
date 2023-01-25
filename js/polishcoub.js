@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Polish Coub
 // @namespace    http://blackuspl.github.io/DarknessAir
-// @version      0.50
+// @version      0.51
 // @description  Make Coub in polish language
 // @author       BlackusPL
 // @match        https://coub.com/*
@@ -10,11 +10,12 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
+  'use strict';
 function translate() {
 var replacements, regex, key, textnodes, node, s;
+// Wiadomość poniżej jest nieaktualna
 // Jeśli to ktoś czyta to już mówie że wprowadze niestety google tłumacza do tego kodu bo nie mam sił tłumaczyć wszystkiego
-  replacements = {
+replacements = {
 
 'Coub will keep living and evolving with the new team. Stay tuned' : 'Coub będzie żył i ewoluował wraz z nowym zespołem. Zostańcie z nami',
 'Add new channel' : 'Dodaj nowy kanał',
@@ -32,7 +33,11 @@ var replacements, regex, key, textnodes, node, s;
 'Show translation' : 'Pokaż przetłumaczone',
 'More stories' : 'Więcej story',
 'Stories' : 'Story',
+'Daily' : 'Dzisiejsze',
 'Weekly' : 'Tygodniowe',
+'Monthly' : 'Miesięczne',
+'Quarterly' : 'Kwartałowe',
+'Six months' : '6 miesięczne',
 'Coub picks' : 'Wybrane przez Coub',
 'Clear all' : 'Wyczyść wszystko',
 'Best Of The Year' : 'Najlepsze W Tym Roku',
@@ -109,23 +114,24 @@ var replacements, regex, key, textnodes, node, s;
 ' by ' : ' przez ',
 'Coubs' : 'Couby',
 'Popular' : 'Popularne',
-    ///////////////////////////////////////////////////////
-    '':''};
+'Logout' : 'Wyloguj',
+  ///////////////////////////////////////////////////////
+  '':''};
 
 regex = {};
 for (key in replacements) {
-    regex[key] = new RegExp(key, 'g');
+  regex[key] = new RegExp(key, 'g');
 }
 
 textnodes = document.evaluate( "//body//text()", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 
 for (var i = 0; i < textnodes.snapshotLength; i++) {
-    node = textnodes.snapshotItem(i);
-    s = node.data;
-    for (key in replacements) {
-        s = s.replace(regex[key], replacements[key]);
-    }
-    node.data = s;
+  node = textnodes.snapshotItem(i);
+  s = node.data;
+  for (key in replacements) {
+      s = s.replace(regex[key], replacements[key]);
+  }
+  node.data = s;
 }}
 translate();
 
@@ -134,9 +140,9 @@ document.getElementsByClassName('list list--selectable -centered-text')[0].inser
 document.onscroll = function() {translate()};
 // document.onscroll = function() {console.log('scroll działa')};
 /* setInterval(function() {
-  if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: block;') {
-    translate();
-  }
+if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: block;') {
+  translate();
+}
 }, 1000); */
 //    document.querySelector('div.load-indicator.-big.-center.-blue[style="display: none;"]').addEventListener('change', function () {
 //    if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: none;') console.log('true')});

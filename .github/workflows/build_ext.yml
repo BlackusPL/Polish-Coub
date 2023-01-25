@@ -14,3 +14,8 @@ jobs:
         with:
           files: manifest.json favicon.svg credits.html background-coub-pl.js style/ js/ ico/ _locales/
           dest: Polish-Coub.zip
+      - name: Upload apk
+        uses: actions/upload-artifact@v2
+        with:
+          name: ext-release
+          path: builds/Polish-Coub.zip

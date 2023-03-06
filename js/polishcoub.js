@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Polish Coub
 // @namespace    http://blackuspl.github.io/DarknessAir
-// @version      0.54
+// @version      0.54.1
 // @description  Make Coub in polish language
 // @author       BlackusPL
 // @match        https://coub.com/*
@@ -159,9 +159,13 @@ for (var i = 0; i < textnodes.snapshotLength; i++) {
 }}
 translate();
 
-document.getElementById('q').placeholder = 'Wyszukaj Couba';
+try {
+  document.getElementById('q').placeholder = 'Wyszukaj Couba';
+  document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">English</li>');
+} catch (error) {
+  console.error(`Can't find "Search Coub" placeholder or Language Selector`)
+};
 // document.querySelector('[placeholder="Post your comment here..."]').placeholder = 'Zamieść swój komentarz tutaj...';
-document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">English</li>');
 document.onscroll = function() {translate()};
 // document.onscroll = function() {console.log('scroll działa')};
 /* setInterval(function() {

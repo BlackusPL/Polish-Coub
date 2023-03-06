@@ -6,7 +6,9 @@ on:
   push:
     branches: [ "main" ]
     paths-ignore:
-      - 'metadata/**'
+      - '.git/**'
+      - '.github/**'
+      - 'README.md'
   workflow_dispatch:
 
 jobs:
@@ -23,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Polish-Coub
-          path: manifest.json favicon.svg credits.html background-coub-pl.js style/ js/ ico/ _locales/ # ${{ github.workspace }}
+          path: ${{ github.workspace }}

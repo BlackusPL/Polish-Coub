@@ -3,6 +3,10 @@ name: Build extension
 on:
 #  release:
 #    types: [published]
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - 'metadata/**'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +19,8 @@ jobs:
 #          files: manifest.json favicon.svg credits.html background-coub-pl.js style/ js/ ico/ _locales/
 #          recursive: false
 #          dest: Polish-Coub.zip
-      - uses: actions/upload-artifact@v1
+      - name: Upload zip version
+        uses: actions/upload-artifact@v3
         with:
           name: Polish-Coub
-          path: ${{ github.workspace }}
+          path: manifest.json favicon.svg credits.html background-coub-pl.js style/ js/ ico/ _locales/ # ${{ github.workspace }}

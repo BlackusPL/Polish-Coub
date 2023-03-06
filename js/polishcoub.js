@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Polish Coub
 // @namespace    http://blackuspl.github.io/DarknessAir
-// @version      0.53
+// @version      0.54
 // @description  Make Coub in polish language
 // @author       BlackusPL
 // @match        https://coub.com/*
@@ -26,9 +26,14 @@ replacements = {
 'View all' : 'Obejrz wszystkie',
 'Home' : 'Strona główna',
 'Hot' : 'Na czasie',
+'Random Reactions' : 'Losowe Reakcje',
 'Random' : 'Losowe',
 'Feedback' : 'Opinie',
 'SOURCE' : 'ŹRÓDŁO',
+'Paste a video link' : 'Wklej link do filmu',
+'Upload a video' : 'Prześlij film',
+'Upload and trim your video. Max: 400 MB and 20 min. Coub supports most video formats.' : 'Prześlij i przytnij swój film. Max: 400 MB i 20 min. Coub wspiera większość formatów filmów.',
+'Choose community to publish' : 'Wybierz społeczność by opublikować',
 'Show more comments' : 'Pokaż więcej komentarzy',
 'Show more...' : 'Pokaż więcej...',
 'Show less' : 'Pokaż mniej',
@@ -56,12 +61,21 @@ replacements = {
 'Dislike' : 'Nielubię',
 'Download' : 'Pobierz',
 'Song' : 'Piosenka',
+'Add Music' : 'Dodaj Muzykę',
+'Sound' : 'Dźwięk',
+'Undo' : 'Cofnij',
+'Redo' : 'Ponów',
+'Back Loop' : 'Odwrócona Pętla',
+'Loop' : 'Pętla',
+'Splices' : 'Splataj',
+'Shadow Frame' : 'Rama cienia',
 'Bookmarks' : 'Zakładki',
 'Feed' : 'Historie',
 'Following' : 'Obserwuje',
 'Followers' : 'Obserwują',
 'Followed' : 'Zaobserwowane',
 'Follow' : 'Zaobserwuj',
+'Describe your coub' : 'Opisz swojego couba',
 'Previous Week' : 'Poprzedni Tydzień',
 'Next Week' : 'Następny Tydzień',
 'Favourites' : 'Ulubione',
@@ -123,6 +137,8 @@ replacements = {
 'Coubs' : 'Couby',
 'Popular' : 'Popularne',
 'Logout' : 'Wyloguj',
+'Next' : 'Dalej',
+'Back' : 'Wróć',
   ///////////////////////////////////////////////////////
   '':''};
 

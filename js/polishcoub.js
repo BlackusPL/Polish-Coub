@@ -1,13 +1,15 @@
 // ==UserScript==
-// @name         Polish Coub
-// @namespace    http://blackuspl.github.io/DarknessAir
-// @version      0.54.2
-// @description  Make Coub in polish language
-// @author       BlackusPL
-// @match        https://coub.com/*
-// @exclude      https://coub.com/chat/*
-// @icon         https://coub.com/favicon.ico
-// @grant        GM_addStyle
+// @name           Polish Coub
+// @name:pl        Polski Coub
+// @namespace      http://blackuspl.github.io/DarknessAir
+// @version        0.54.3
+// @description    Make Coub in polish language
+// @description:pl Tłumaczy Couba na polski język
+// @author         BlackusPL
+// @match          https://coub.com/*
+// @exclude        https://coub.com/chat/*
+// @icon           https://coub.com/favicon.ico
+// @grant          GM_addStyle
 // ==/UserScript==
 
 (function () {
@@ -97,6 +99,7 @@ replacements = {
 'Create' : 'Stwórz',
 'Create Coub' : 'Stwórz Couba',
 'Create Story' : 'Stwórz Story',
+'Copy link' : 'Kopiuj link',
 'Message' : 'Wiadomość',
 'Most recent' : 'Najnowsze',
 'Most popular' : 'Najbardziej popularne',
@@ -126,6 +129,7 @@ replacements = {
 'Channels' : 'Kanały',
 'Oldest' : 'Najstarsze',
 'Views count' : 'Ilość wyświetleń',
+'View replies' : 'Obejrzyj odpowiedzi',
 'Recent' : 'Niedawne',
 'All channels' : 'Wszystkie kanały',
 'Audio recognition by ' : 'Rozpoznawanie dźwięku przez ',
@@ -137,8 +141,14 @@ replacements = {
 'Coubs' : 'Couby',
 'Popular' : 'Popularne',
 'Logout' : 'Wyloguj',
+'hours' : 'godziny',
 'Next' : 'Dalej',
+'More' : 'Więcej',
+'More...' : 'Więcej...',
 'Back' : 'Wróć',
+'from' : 'z',
+'Hide' : 'Ukryj',
+'reply' : 'odpowiedź',
   ///////////////////////////////////////////////////////
   '':''};
 

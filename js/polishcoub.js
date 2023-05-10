@@ -2,25 +2,30 @@
 // @name           Polish Coub
 // @name:pl        Polski Coub
 // @namespace      http://blackuspl.github.io/DarknessAir
-// @version        0.54.3
+// @version        0.55
 // @description    Make Coub in polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL
 // @match          https://coub.com/*
 // @exclude        https://coub.com/chat/*
-// @icon           https://coub.com/favicon.ico
+// @icon           https://raw.githubusercontent.com/BlackusPL/Polish-Coub/main/favicon.svg
 // @grant          GM_addStyle
 // ==/UserScript==
 
 (function () {
   'use strict';
+
+  let observer;
+
 function translate() {
 var replacements, regex, key, textnodes, node, s;
-// Jeśli to ktoś czyta to już mówie że wprowadze niestety google tłumacza do tego kodu bo nie mam sił tłumaczyć wszystkiego
+// Jeśli to ktoś czyta to już mówie że wprowadze niestety google tłumacza do tego kodu bo nie mam sił tłumaczyć wszystkiego // 10.08.2022
+// Witam kogoś kto to czyta, jednak zostawie to ale zmienie sposób działania tego bo wychodzi to spoza kontroli czasami // 10.05.2023
 replacements = {
 
 'Coub will keep living and evolving with the new team. Stay tuned' : 'Coub będzie żył i ewoluował wraz z nowym zespołem. Zostańcie z nami',
 ' is looking for feedback.' : ' szuka informacji zwrotnej.',
+'Only other users can leave reactions to your coub' : 'Tylko inni użytkownicy mogą zostawiać reakcje na twoje couby',
 'Be the first to share your thoughts!' : 'Bądź pierwszym, który podzieli się swoimi myślami!',
 'Add new channel' : 'Dodaj nowy kanał',
 'Mosaic view' : 'Widok mozaiki',
@@ -69,9 +74,12 @@ replacements = {
 'Redo' : 'Ponów',
 'Back Loop' : 'Odwrócona Pętla',
 'Loop' : 'Pętla',
+'Fullscreen' : 'Pełny ekran',
 'Splices' : 'Splataj',
 'Shadow Frame' : 'Rama cienia',
 'Bookmarks' : 'Zakładki',
+'Bookmarked' : 'Zapisane',
+'Bookmark' : 'Zapisz',
 'Feed' : 'Historie',
 'Following' : 'Obserwuje',
 'Followers' : 'Obserwują',
@@ -121,12 +129,13 @@ replacements = {
 'Promoted' : 'Wypromowane',
 'Settings' : 'Ustawienia',
 'Share' : 'Udostępnij',
-'Dark Theme' : 'Czarny Motyw',
+'Dark Theme' : 'Ciemny Motyw',
 'Language: ' : 'Język: ',
 'Developers' : 'Deweloperzy',
 'Help' : 'Pomoc',
 'English' : 'Polski',
 'Channels' : 'Kanały',
+'Notifications' : 'Powiadomienia',
 'Oldest' : 'Najstarsze',
 'Views count' : 'Ilość wyświetleń',
 'View replies' : 'Obejrzyj odpowiedzi',
@@ -149,6 +158,9 @@ replacements = {
 'from' : 'z',
 'Hide' : 'Ukryj',
 'reply' : 'odpowiedź',
+'Flag' : 'Zgłoś',
+'Embed' : 'Osadzenie',
+'Mail' : 'Poczta',
   ///////////////////////////////////////////////////////
   '':''};
 
@@ -171,12 +183,20 @@ translate();
 
 try {
   document.getElementById('q').placeholder = 'Wyszukaj Couba';
-  document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">English</li>');
+  document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">EnglIsh</li>');
 } catch (error) {
   console.error(`Can't find "Search Coub" placeholder or Language Selector`)
 };
-// document.querySelector('[placeholder="Post your comment here..."]').placeholder = 'Zamieść swój komentarz tutaj...';
-document.onscroll = translate;
+observer = new MutationObserver(() => {
+  translate();
+  document.querySelector('[placeholder="Post your comment here..."]').placeholder = 'Zamieść swój komentarz tutaj...';
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+// document.onscroll = translate;
 /* setInterval(function() {
 if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: block;') {
   translate();

@@ -2,7 +2,7 @@
 // @name           Polish Coub
 // @name:pl        Polski Coub
 // @namespace      http://blackuspl.github.io/DarknessAir
-// @version        0.55
+// @version        0.55.1
 // @description    Make Coub in polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL
@@ -13,15 +13,15 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
+  'use strict';
 
-    let observer;
+  let observer;
 
 function translate() {
 var replacements, regex, key, textnodes, node, s;
 // Jeśli to ktoś czyta to już mówie że wprowadze niestety google tłumacza do tego kodu bo nie mam sił tłumaczyć wszystkiego // 10.08.2022
 // Witam kogoś kto to czyta, jednak zostawie to ale zmienie sposób działania tego bo wychodzi to spoza kontroli czasami // 10.05.2023
-  replacements = {
+replacements = {
 
 'Coub will keep living and evolving with the new team. Stay tuned' : 'Coub będzie żył i ewoluował wraz z nowym zespołem. Zostańcie z nami',
 ' is looking for feedback.' : ' szuka informacji zwrotnej.',
@@ -35,6 +35,8 @@ var replacements, regex, key, textnodes, node, s;
 'Hot' : 'Na czasie',
 'Random Reactions' : 'Losowe Reakcje',
 'Random' : 'Losowe',
+'Best coubs' : 'Najlepsze couby',
+'Featured' : 'Wyróżnione',
 'Feedback' : 'Opinie',
 'SOURCE' : 'ŹRÓDŁO',
 'Paste a video link' : 'Wklej link do filmu',
@@ -148,7 +150,7 @@ var replacements, regex, key, textnodes, node, s;
 'views' : 'wyświetleń',
 ' by ' : ' przez ',
 'Coubs' : 'Couby',
-'Popular' : 'Popularne',
+//'Popular' : 'Popularne',
 'Logout' : 'Wyloguj',
 'hours' : 'godziny',
 'Next' : 'Dalej',
@@ -161,46 +163,48 @@ var replacements, regex, key, textnodes, node, s;
 'Flag' : 'Zgłoś',
 'Embed' : 'Osadzenie',
 'Mail' : 'Poczta',
-    ///////////////////////////////////////////////////////
-    '':''};
+  ///////////////////////////////////////////////////////
+  '':''};
 
 regex = {};
 for (key in replacements) {
-    regex[key] = new RegExp(key, 'g');
+  regex[key] = new RegExp(key, 'g');
 }
 
 textnodes = document.evaluate( "//body//text()", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 
 for (var i = 0; i < textnodes.snapshotLength; i++) {
-    node = textnodes.snapshotItem(i);
-    s = node.data;
-    for (key in replacements) {
-        s = s.replace(regex[key], replacements[key]);
-    }
-    node.data = s;
-}}
+  node = textnodes.snapshotItem(i);
+  s = node.data;
+  for (key in replacements) {
+      s = s.replace(regex[key], replacements[key]);
+  }
+  node.data = s;
+}
+document.querySelector('a[href="/hot"]').childNodes[1].textContent = '\nPopularne\n';
+}
 translate();
 
 try {
-    document.getElementById('q').placeholder = 'Wyszukaj Couba';
-    document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">EnglIsh</li>');
+  document.getElementById('q').placeholder = 'Wyszukaj Couba';
+  document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">EnglIsh</li>');
 } catch (error) {
-    console.error(`Can't find "Search Coub" placeholder or Language Selector`)
+  console.error(`Can't find "Search Coub" placeholder or Language Selector`)
 };
-  observer = new MutationObserver(() => {
-    translate();
-    try {document.querySelector('[placeholder="Post your comment here..."]').placeholder = 'Zamieść swój komentarz tutaj...'} catch (error) {};
-  });
+observer = new MutationObserver(() => {
+  translate();
+  try {document.querySelector('[placeholder="Post your comment here..."]').placeholder = 'Zamieść swój komentarz tutaj...'} catch (error) {};
+});
 
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
 // document.onscroll = translate;
 /* setInterval(function() {
-  if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: block;') {
-    translate();
-  }
+if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: block;') {
+  translate();
+}
 }, 1000); */
 //    document.querySelector('div.load-indicator.-big.-center.-blue[style="display: none;"]').addEventListener('change', function () {
 //    if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: none;') console.log('true')});

@@ -2,7 +2,7 @@
 // @name           Polish Coub
 // @name:pl        Polski Coub
 // @namespace      http://blackuspl.github.io/DarknessAir
-// @version        0.55.1
+// @version        0.55.2
 // @description    Make Coub in polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL
@@ -17,7 +17,6 @@
 
   let observer;
 
-function translate() {
 var replacements, regex, key, textnodes, node, s;
 // Jeśli to ktoś czyta to już mówie że wprowadze niestety google tłumacza do tego kodu bo nie mam sił tłumaczyć wszystkiego // 10.08.2022
 // Witam kogoś kto to czyta, jednak zostawie to ale zmienie sposób działania tego bo wychodzi to spoza kontroli czasami // 10.05.2023
@@ -36,6 +35,8 @@ replacements = {
 'Random Reactions' : 'Losowe Reakcje',
 'Random' : 'Losowe',
 'Best coubs' : 'Najlepsze couby',
+'Featured channels' : 'Wyróżnione kanały',
+'Top of the Month' : 'Najlepsze w miesiącu',
 'Featured' : 'Wyróżnione',
 'Feedback' : 'Opinie',
 'SOURCE' : 'ŹRÓDŁO',
@@ -45,6 +46,7 @@ replacements = {
 'Choose community to publish' : 'Wybierz społeczność by opublikować',
 'Show more comments' : 'Pokaż więcej komentarzy',
 'Show more...' : 'Pokaż więcej...',
+'View More' : 'Zobacz Więcej',
 'Show less' : 'Pokaż mniej',
 'Show original' : 'Pokaż oryginał',
 'Show translation' : 'Pokaż przetłumaczone',
@@ -58,11 +60,11 @@ replacements = {
 'Monthly' : 'Miesięczne',
 'Quarterly' : 'Kwartałowe',
 'Six months' : '6 miesięczne',
+'Yearly' : 'Roczne',
 'Coub picks' : 'Wybrane przez Coub',
 'Clear all' : 'Wyczyść wszystko',
 'Best Of The Year' : 'Najlepsze W Tym Roku',
 'Who to follow' : 'Kogo zaobserwować',
-'Featured channels' : 'Rekomendowane kanały',
 'My likes' : 'Moje ulubione',
 'Most liked' : 'Najbardziej ulubione',
 'Most viewed' : 'Najbardziej oglądane',
@@ -144,13 +146,14 @@ replacements = {
 'Recent' : 'Niedawne',
 'All channels' : 'Wszystkie kanały',
 'Audio recognition by ' : 'Rozpoznawanie dźwięku przez ',
+'Next set of stories in' : 'Kolejny zestaw story za',
 'Join our' : 'Dołącz do',
 'community' : 'społeczności',
 'Add' : 'Dodaj',
 'views' : 'wyświetleń',
 ' by ' : ' przez ',
 'Coubs' : 'Couby',
-//'Popular' : 'Popularne',
+'Popular' : 'Popula​rne', // invisible character to prevent to translation conflict
 'Logout' : 'Wyloguj',
 'hours' : 'godziny',
 'Next' : 'Dalej',
@@ -163,9 +166,11 @@ replacements = {
 'Flag' : 'Zgłoś',
 'Embed' : 'Osadzenie',
 'Mail' : 'Poczta',
+'Undervalued' : 'Niedocenione',
   ///////////////////////////////////////////////////////
   '':''};
 
+function translate() {
 regex = {};
 for (key in replacements) {
   regex[key] = new RegExp(key, 'g');
@@ -181,7 +186,7 @@ for (var i = 0; i < textnodes.snapshotLength; i++) {
   }
   node.data = s;
 }
-document.querySelector('a[href="/hot"]').childNodes[1].textContent = '\nPopularne\n';
+//document.querySelector('a[href="/hot"]').childNodes[1].textContent = '\nPopularne\n';
 }
 translate();
 

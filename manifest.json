@@ -29,5 +29,5 @@
    "name": "__MSG_appName__",
    "permissions": [ "webRequest" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.55.1"
+   "version": "0.55.2"
 }

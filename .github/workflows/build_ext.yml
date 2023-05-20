@@ -30,4 +30,4 @@ jobs:
             !.git/**
             !.github/** 
             !README.md
-            !Polish Coub .user.js
+            !Polish Coub.user.js

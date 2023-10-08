@@ -2,7 +2,10 @@
 // @name           Polish Coub
 // @name:pl        Polski Coub
 // @namespace      http://blackuspl.github.io/DarknessAir
-// @version        0.55.2
+// @source         https://github.com/BlackusPL/Polish-Coub
+// @updateURL      https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
+// @downloadURL    https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
+// @version        0.55.3
 // @description    Make Coub in polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL
@@ -40,6 +43,8 @@ replacements = {
 'Featured' : 'Wyróżnione',
 'Feedback' : 'Opinie',
 'SOURCE' : 'ŹRÓDŁO',
+'Delete coub' : 'Usuń couba',
+'Edit info' : 'Edytuj informacje',
 'Paste a video link' : 'Wklej link do filmu',
 'Upload a video' : 'Prześlij film',
 'Upload and trim your video. Max: 400 MB and 20 min. Coub supports most video formats.' : 'Prześlij i przytnij swój film. Max: 400 MB i 20 min. Coub wspiera większość formatów filmów.',
@@ -190,18 +195,22 @@ for (var i = 0; i < textnodes.snapshotLength; i++) {
 }
 translate();
 
+const $q = (_) => document.querySelector(_);
 try {
-  document.getElementById('q').placeholder = 'Wyszukaj Couba';
+  $q('#q').placeholder = 'Wyszukaj Couba';
   document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">EnglIsh</li>');
 } catch (error) {
   console.error(`Can't find "Search Coub" placeholder or Language Selector`)
 };
+
 observer = new MutationObserver(() => {
   translate();
-  try {document.querySelector('[placeholder="Post your comment here..."]').placeholder = 'Zamieść swój komentarz tutaj...'} catch (error) {};
+  try {$q('[placeholder="Post your comment here..."]').placeholder = 'Zamieść swój komentarz tutaj...'} catch (error) {};
 });
 
+
 observer.observe(document.body, {
+  threshold: 0.5,
   childList: true,
   subtree: true
 });
@@ -213,5 +222,10 @@ if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute
 }, 1000); */
 //    document.querySelector('div.load-indicator.-big.-center.-blue[style="display: none;"]').addEventListener('change', function () {
 //    if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: none;') console.log('true')});
+GM_addStyle(`
+.footer__copyright div:after {
+content: " Translated by BlackusPL";
+}
+`);
 console.log("%c[Polish Coub] %cSuccesfully Loaded","color: rgb(58, 113, 193)","color: white")
 }());

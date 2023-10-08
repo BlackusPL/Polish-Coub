@@ -12,7 +12,7 @@
    },
    "content_scripts": [ {
       "css": [ "style/credits.css" ],
-      "js": [ "js/polishcoub.js" ],
+      "js": [ "js/Polish Coub.user.js" ],
       "matches": [ "*://coub.com/*" ],
 	  "exclude_matches": [
             "*://coub.com/chat*"
@@ -29,5 +29,5 @@
    "name": "__MSG_appName__",
    "permissions": [ "webRequest" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.55.2"
+   "version": "0.55.3"
 }

@@ -5,12 +5,17 @@
 // @source         https://github.com/BlackusPL/Polish-Coub
 // @updateURL      https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
 // @downloadURL    https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
-// @version        0.55.3
-// @description    Make Coub in polish language
+// @version        0.56
+// @description    Translate Coub to polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL
-// @match          https://coub.com/*
-// @exclude        https://coub.com/chat/*
+// @match          *://coub.com/*
+// @exclude        *://coub.com/chat/*
+// @exclude        *://coub.com/rules*
+// @exclude        *://coub.com/dmca*
+// @exclude        *://coub.com/privacy*
+// @exclude        *://coub.com/tos*
+// @exclude        *://coub.com/brand-assets*
 // @icon           https://raw.githubusercontent.com/BlackusPL/Polish-Coub/main/favicon.svg
 // @grant          GM_addStyle
 // ==/UserScript==
@@ -30,8 +35,6 @@ replacements = {
 'Only other users can leave reactions to your coub' : 'Tylko inni użytkownicy mogą zostawiać reakcje na twoje couby',
 'Be the first to share your thoughts!' : 'Bądź pierwszym, który podzieli się swoimi myślami!',
 'Add new channel' : 'Dodaj nowy kanał',
-'Mosaic view' : 'Widok mozaiki',
-'List view' : 'Widok listy',
 'View all' : 'Obejrz wszystkie',
 'Home' : 'Strona główna',
 'Hot' : 'Na czasie',
@@ -40,11 +43,8 @@ replacements = {
 'Best coubs' : 'Najlepsze couby',
 'Featured channels' : 'Wyróżnione kanały',
 'Top of the Month' : 'Najlepsze w miesiącu',
-'Featured' : 'Wyróżnione',
 'Feedback' : 'Opinie',
 'SOURCE' : 'ŹRÓDŁO',
-'Delete coub' : 'Usuń couba',
-'Edit info' : 'Edytuj informacje',
 'Paste a video link' : 'Wklej link do filmu',
 'Upload a video' : 'Prześlij film',
 'Upload and trim your video. Max: 400 MB and 20 min. Coub supports most video formats.' : 'Prześlij i przytnij swój film. Max: 400 MB i 20 min. Coub wspiera większość formatów filmów.',
@@ -57,8 +57,6 @@ replacements = {
 'Show translation' : 'Pokaż przetłumaczone',
 'More stories' : 'Więcej story',
 'Stories' : 'Story',
-' day' : ' dzień',
-' days' : ' dni',
 'Reply' : 'Odpowiedz',
 'Daily' : 'Dzisiejsze',
 'Weekly' : 'Tygodniowe',
@@ -73,9 +71,6 @@ replacements = {
 'My likes' : 'Moje ulubione',
 'Most liked' : 'Najbardziej ulubione',
 'Most viewed' : 'Najbardziej oglądane',
-'Likes' : 'Lubiane',
-'Dislike' : 'Nielubię',
-'Download' : 'Pobierz',
 'Song' : 'Piosenka',
 'Add Music' : 'Dodaj Muzykę',
 'Sound' : 'Dźwięk',
@@ -83,17 +78,11 @@ replacements = {
 'Redo' : 'Ponów',
 'Back Loop' : 'Odwrócona Pętla',
 'Loop' : 'Pętla',
-'Fullscreen' : 'Pełny ekran',
 'Splices' : 'Splataj',
 'Shadow Frame' : 'Rama cienia',
 'Bookmarks' : 'Zakładki',
-'Bookmarked' : 'Zapisane',
-'Bookmark' : 'Zapisz',
 'Feed' : 'Historie',
 'Following' : 'Obserwuje',
-'Followers' : 'Obserwują',
-'Followed' : 'Zaobserwowane',
-'Follow' : 'Zaobserwuj',
 'Describe your coub' : 'Opisz swojego couba',
 'Previous Week' : 'Poprzedni Tydzień',
 'Next Week' : 'Następny Tydzień',
@@ -111,40 +100,19 @@ replacements = {
 'Reposts' : 'Reposty',
 'Recommended by' : 'Rekomendowane przez',
 'Recent Search' : 'Niedawno Wyszukiwane',
-'Edit cover' : 'Edytuj tło',
-'Created by' : 'Stworzone przez',
 'Create' : 'Stwórz',
-'Create Coub' : 'Stwórz Couba',
-'Create Story' : 'Stwórz Story',
-'Copy link' : 'Kopiuj link',
 'Message' : 'Wiadomość',
 'Most recent' : 'Najnowsze',
 'Most popular' : 'Najbardziej popularne',
 'Hidden gems' : 'Ukryte perełki',
 "Coubers' choice" : 'Wybór Coubowiczów',
 'Communities' : 'Społeczności',
-'reposted by' : 'podane dalej przez',
-'Jan' : 'Sty',
-'Feb' : 'Lut',
-'Apr' : 'Kwi',
-'May' : 'Maj',
-'Jun' : 'Cze',
-'Jul' : 'Lip',
-'Aug' : 'Sie',
-'Sep' : 'Wrz',
-'Oct' : 'Paź',
-'Nov' : 'Lis',
-'Dec' : 'Gru',
-'Promoted' : 'Wypromowane',
-'Settings' : 'Ustawienia',
-'Share' : 'Udostępnij',
 'Dark Theme' : 'Ciemny Motyw',
 'Language: ' : 'Język: ',
 'Developers' : 'Deweloperzy',
 'Help' : 'Pomoc',
 'English' : 'Polski',
 'Channels' : 'Kanały',
-'Notifications' : 'Powiadomienia',
 'Oldest' : 'Najstarsze',
 'Views count' : 'Ilość wyświetleń',
 'View replies' : 'Obejrzyj odpowiedzi',
@@ -153,17 +121,13 @@ replacements = {
 'Audio recognition by ' : 'Rozpoznawanie dźwięku przez ',
 'Next set of stories in' : 'Kolejny zestaw story za',
 'Join our' : 'Dołącz do',
-'community' : 'społeczności',
 'Add' : 'Dodaj',
-'views' : 'wyświetleń',
-' by ' : ' przez ',
 'Coubs' : 'Couby',
 'Popular' : 'Popula​rne', // invisible character to prevent to translation conflict
 'Logout' : 'Wyloguj',
 'hours' : 'godziny',
 'Next' : 'Dalej',
 'More' : 'Więcej',
-'More...' : 'Więcej...',
 'Back' : 'Wróć',
 'from' : 'z',
 'Hide' : 'Ukryj',
@@ -171,9 +135,7 @@ replacements = {
 'Flag' : 'Zgłoś',
 'Embed' : 'Osadzenie',
 'Mail' : 'Poczta',
-'Undervalued' : 'Niedocenione',
-  ///////////////////////////////////////////////////////
-  '':''};
+'Undervalued' : 'Niedocenione'};
 
 function translate() {
 regex = {};
@@ -194,11 +156,60 @@ for (var i = 0; i < textnodes.snapshotLength; i++) {
 //document.querySelector('a[href="/hot"]').childNodes[1].textContent = '\nPopularne\n';
 }
 translate();
+  replacements = {
+'Copy link' : 'Kopiuj link',
+'Create Coub' : 'Stwórz Couba',
+'Create Story' : 'Stwórz Story',
+'Followers' : 'Obserwują',
+'Followed' : 'Zaobserwowane',
+'Unfollow' : 'Przestań obserwować',
+'Follow' : 'Zaobserwuj',
+//'Subscribe': '',
+//'Unsubscribe' : '',
+' day' : ' dzień',
+' days' : ' dni',
+'Edit cover' : 'Edytuj tło',
+'Created by' : 'Stworzone przez',
+'Bookmarked' : 'Zapisane',
+'Bookmark' : 'Zapisz',
+'Delete coub' : 'Usuń couba',
+'Edit info' : 'Edytuj informacje',
+'Likes' : 'Lubiane',
+'Dislike' : 'Nielubię',
+'Download' : 'Pobierz',
+'reposted by' : 'podane dalej przez',
+'More...' : 'Więcej...',
+'Jan' : 'Sty',
+'Feb' : 'Lut',
+'Apr' : 'Kwi',
+'May' : 'Maj',
+'Jun' : 'Cze',
+'Jul' : 'Lip',
+'Aug' : 'Sie',
+'Sep' : 'Wrz',
+'Oct' : 'Paź',
+'Nov' : 'Lis',
+'Dec' : 'Gru',
+'Notifications' : 'Powiadomienia',
+'Promoted' : 'Wypromowane',
+'Fullscreen' : 'Pełny ekran',
+'Mosaic view' : 'Widok mozaiki',
+'List view' : 'Widok listy',
+'Settings' : 'Ustawienia',
+'Share' : 'Udostępnij',
+'views' : 'wyświetleń',
+' by ' : ' przez ',
+'community' : 'społeczności',
+'Featured' : 'Wyróżnione',
+'Pinned' : 'Prz​ypięty',
+'Pin' : 'Przypnij'
+  };
 
 const $q = (_) => document.querySelector(_);
 try {
   $q('#q').placeholder = 'Wyszukaj Couba';
   document.getElementsByClassName('list list--selectable -centered-text')[0].insertAdjacentHTML('afterbegin' , '<li class="list__item list__item-beta" data-code="pl">EnglIsh</li>');
+  //$q('coub__pinned-badge').data-prompt='Przypięty Coub';
 } catch (error) {
   console.error(`Can't find "Search Coub" placeholder or Language Selector`)
 };
@@ -222,10 +233,12 @@ if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute
 }, 1000); */
 //    document.querySelector('div.load-indicator.-big.-center.-blue[style="display: none;"]').addEventListener('change', function () {
 //    if (document.querySelector('div.load-indicator.-big.-center.-blue').getAttribute('style') == 'display: none;') console.log('true')});
+try {
 GM_addStyle(`
 .footer__copyright div:after {
 content: " Translated by BlackusPL";
 }
 `);
+} catch (error) {};
 console.log("%c[Polish Coub] %cSuccesfully Loaded","color: rgb(58, 113, 193)","color: white")
 }());

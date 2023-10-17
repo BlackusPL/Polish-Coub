@@ -15,12 +15,17 @@
       "js": [ "js/Polish Coub.user.js" ],
       "matches": [ "*://coub.com/*" ],
 	  "exclude_matches": [
-            "*://coub.com/chat*"
+            "*://coub.com/chat*",
+            "*://coub.com/rules*",
+            "*://coub.com/dmca*",
+            "*://coub.com/privacy*",
+            "*://coub.com/tos*",
+            "*://coub.com/brand-assets*"
         ]
    } ],
    "default_locale": "en",
    "description": "__MSG_appDesc__",
-   "homepage_url": "https://blackuspl.github.io/DarknessAir",
+   "homepage_url": "https://blackuspl.github.io/",
    "icons": {
       "128": "/ico/favicon.png"
    },
@@ -29,5 +34,5 @@
    "name": "__MSG_appName__",
    "permissions": [ "webRequest" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.55.3"
+   "version": "0.56"
 }

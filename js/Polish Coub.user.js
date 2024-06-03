@@ -3,9 +3,9 @@
 // @name:pl        Polski Coub
 // @namespace      http://blackuspl.github.io/DarknessAir
 // @source         https://github.com/BlackusPL/Polish-Coub
-// @updateURL      https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
+// @updateURL      https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.meta.js
 // @downloadURL    https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
-// @version        0.56
+// @version        0.57
 // @description    Translate Coub to polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL
@@ -34,12 +34,12 @@ replacements = {
 ' is looking for feedback.' : ' szuka informacji zwrotnej.',
 'Only other users can leave reactions to your coub' : 'Tylko inni użytkownicy mogą zostawiać reakcje na twoje couby',
 'Be the first to share your thoughts!' : 'Bądź pierwszym, który podzieli się swoimi myślami!',
-'Add new channel' : 'Dodaj nowy kanał',
 'View all' : 'Obejrz wszystkie',
 'Home' : 'Strona główna',
 'Hot' : 'Na czasie',
 'Random Reactions' : 'Losowe Reakcje',
 'Random' : 'Losowe',
+'You may also like' : 'Może ci się też spodobać',
 'Best coubs' : 'Najlepsze couby',
 'Featured channels' : 'Wyróżnione kanały',
 'Top of the Month' : 'Najlepsze w miesiącu',
@@ -87,7 +87,6 @@ replacements = {
 'Previous Week' : 'Poprzedni Tydzień',
 'Next Week' : 'Następny Tydzień',
 'Favourites' : 'Ulubione',
-'Comments' : 'Komentarze',
 'others' : 'innych',
 'Find friends on Coub' : 'Znajdź znajomych na Coubie',
 'Connect your social networks to find' : 'Połącz swoje konta społecznościowe aby znaleźć',
@@ -124,7 +123,6 @@ replacements = {
 'Add' : 'Dodaj',
 'Coubs' : 'Couby',
 'Popular' : 'Popula​rne', // invisible character to prevent to translation conflict
-'Logout' : 'Wyloguj',
 'hours' : 'godziny',
 'Next' : 'Dalej',
 'More' : 'Więcej',
@@ -157,13 +155,21 @@ for (var i = 0; i < textnodes.snapshotLength; i++) {
 }
 translate();
   replacements = {
+'Only other users can leave reactions to your coub' : 'Tylko inni użytkownicy mogą zostawić reakcje do twojego couba',
 'Copy link' : 'Kopiuj link',
+'Add new channel' : 'Dodaj nowy kanał',
 'Create Coub' : 'Stwórz Couba',
+'Open on Coub' : 'Otwórz na Coubie',
 'Create Story' : 'Stwórz Story',
+'Create recoub' : 'Stwórz recouba',
 'Followers' : 'Obserwują',
 'Followed' : 'Zaobserwowane',
 'Unfollow' : 'Przestań obserwować',
 'Follow' : 'Zaobserwuj',
+'Comments' : 'Komentarze',
+'Community' : 'Społeczność',
+'Hashtags' : 'Hasztagi',
+'Sources' : 'Źródła',
 //'Subscribe': '',
 //'Unsubscribe' : '',
 ' day' : ' dzień',
@@ -174,8 +180,13 @@ translate();
 'Bookmark' : 'Zapisz',
 'Delete coub' : 'Usuń couba',
 'Edit info' : 'Edytuj informacje',
+'Undo like' : 'Usuń polubienie',
+'Undo repost' : 'Usuń reposta',
+'Repost' : 'Repostuj',
 'Likes' : 'Lubiane',
 'Dislike' : 'Nielubię',
+'Like' : 'Lubię',
+'Flag' : 'Zgłoś',
 'Download' : 'Pobierz',
 'reposted by' : 'podane dalej przez',
 'More...' : 'Więcej...',
@@ -196,6 +207,7 @@ translate();
 'Mosaic view' : 'Widok mozaiki',
 'List view' : 'Widok listy',
 'Settings' : 'Ustawienia',
+'Logout' : 'Wyloguj',
 'Share' : 'Udostępnij',
 'views' : 'wyświetleń',
 ' by ' : ' przez ',
@@ -223,7 +235,7 @@ observer = new MutationObserver(() => {
 observer.observe(document.body, {
   threshold: 0.5,
   childList: true,
-  subtree: true
+  subtree: true,
 });
 // document.onscroll = translate;
 /* setInterval(function() {

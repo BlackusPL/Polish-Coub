@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name           Polish Coub
 // @name:pl        Polski Coub
-// @namespace      http://blackuspl.github.io/DarknessAir
+// @namespace      https://darknessair.ovh
 // @source         https://github.com/BlackusPL/Polish-Coub
 // @updateURL      https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.meta.js
 // @downloadURL    https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
-// @version        0.57
+// @version        0.60
 // @description    Translate Coub to polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL

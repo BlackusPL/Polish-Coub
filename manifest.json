@@ -7,9 +7,6 @@
       "default_title": "Polish Coub"
    },
    "author": "BlackusPL",
-   "background": {
-      "service_worker": "background-coub-pl.js"
-   },
    "content_scripts": [ {
       "css": [ "style/credits.css" ],
       "js": [ "js/Polish Coub.user.js" ],
@@ -34,5 +31,5 @@
    "name": "__MSG_appName__",
    "permissions": [ "webRequest" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.57"
+   "version": "0.60"
 }

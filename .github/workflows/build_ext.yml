@@ -18,11 +18,11 @@ jobs:
       - uses: actions/checkout@v3
 #      - uses: vimtor/action-zip@v1
 #        with:
-#          files: manifest.json favicon.svg credits.html background-coub-pl.js style/ js/ ico/ _locales/
+#          files: manifest.json favicon.svg credits.html style/ js/ ico/ _locales/
 #          recursive: false
 #          dest: Polish-Coub.zip
       - name: Upload zip version
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Polish-Coub
           path: |

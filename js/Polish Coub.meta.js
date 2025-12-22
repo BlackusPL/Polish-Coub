@@ -5,7 +5,7 @@
 // @source         https://github.com/BlackusPL/Polish-Coub
 // @updateURL      https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.meta.js
 // @downloadURL    https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
-// @version        0.60
+// @version        0.62
 // @description    Translate Coub to polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL

@@ -5,7 +5,7 @@
 // @source         https://github.com/BlackusPL/Polish-Coub
 // @updateURL      https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.meta.js
 // @downloadURL    https://github.com/BlackusPL/Polish-Coub/raw/main/js/Polish%20Coub.user.js
-// @version        0.60
+// @version        0.62
 // @description    Translate Coub to polish language
 // @description:pl Tłumaczy Couba na polski język
 // @author         BlackusPL
@@ -201,17 +201,6 @@
     'Download': 'Pobierz',
     'reposted by': 'podane dalej przez',
     'More from ': "Więcej od ",
-    'Jan': 'Sty',
-    'Feb': 'Lut',
-    'Apr': 'Kwi',
-    'May': 'Maj',
-    'Jun': 'Cze',
-    'Jul': 'Lip',
-    'Aug': 'Sie',
-    'Sep': 'Wrz',
-    'Oct': 'Paź',
-    'Nov': 'Lis',
-    'Dec': 'Gru',
     'Notifications': 'Powiadomienia',
     'Promoted': 'Wypromowane',
     'Fullscreen': 'Pełny ekran',
@@ -238,6 +227,31 @@ observer = new MutationObserver(() => {
     if(cm_ph.getAttribute('stop-tl')) {return} else {
       cm_ph.placeholder = 'Zamieść swój komentarz tutaj...';
       cm_ph.setAttribute('stop-tl',true)
+    }
+  }
+  for (const e of document.querySelectorAll('div.coub-description__date')) {
+    if (!e.children[0].getAttribute('datepass')) {
+      let datetest = e.innerText.trim().slice(2);
+      const relMatch = datetest.match(/^(\d+)\s*([hd])$/); // daje 3 wartości ["1d","1","d"]
+      if (relMatch) {
+        const value = -Number(relMatch[1]), // zawsze liczba
+        rtype = relMatch[2] === "h" ? "hour" : "day";
+        e.innerHTML =
+          '<span class="hbold"> · </span>' +
+          new Intl.RelativeTimeFormat("pl", { dateStyle: "short" }).format(value, rtype);
+        continue;
+      }
+      const yeartest = /\d{4}(?!\d)/g.test(datetest.slice(datetest.length - 4)); // czy są 4 liczby pod rząd
+      const dateObj = new Date(datetest);
+      if (!isNaN(dateObj.getTime())) { // unika 'Invalid Date' bo jest taka szansa bruh
+        e.innerHTML =
+          '<span class="hbold" datepass="true"> · </span>' +
+          dateObj.toLocaleString("pl-PL", {
+            day: "numeric",
+            month: "short",
+            year: yeartest ? "numeric" : undefined
+          });
+      }
     }
   }
 });
